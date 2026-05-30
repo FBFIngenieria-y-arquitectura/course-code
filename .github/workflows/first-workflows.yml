@@ -1,0 +1,16 @@
+name: First Workflow
+on: [push]
+
+jobs:
+  run-shell-command:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run a shell command
+        run: echo "Hola, Mundo!"
+      - name: Multiline command
+        run: |
+          echo "This is a multiline command."
+          echo "It can run multiple lines of code."
+          echo "Great for complex tasks!"
+          node -v
+          npm -v  
