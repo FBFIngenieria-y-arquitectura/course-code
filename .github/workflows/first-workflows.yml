@@ -14,3 +14,19 @@ jobs:
           echo "Great for complex tasks!"
           node -v
           npm -v  
+  parallel-job-macos:
+    runs-on: macos-latest
+    steps:
+      - name: Run a shell command on macOS
+        run: echo "Running on macOS!"
+      - name: View SW version
+        run: sw_vers
+
+  dependant-job:
+    runs-on: windows-latest
+    needs: [run-shell-command, parallel-job-macos]
+    steps:
+      - name: Run a shell command on Windows
+        run: echo "Running on Windows!"
+      - name: View Windows version
+        run: systeminfo | findstr /B /C:"OS Name" /C:"OS Version"
